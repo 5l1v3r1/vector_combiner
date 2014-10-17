@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vector combiner</title>
+    
+    <script async type="application/dart" src="vector_combiner.dart"></script>
+    <script async src="packages/browser/dart.js"></script>
+    
+    <link rel="stylesheet" href="vector_combiner.css">
+  </head>
+  <body>
+    <h1>Vector combiner</h1>
+    
+    <table id="input-table">
+      <tr>
+        <td class="vector-name">v<sub>1</sub>:</td>
+        <td><input id="v1-x" class="component" value="1"></td>
+        <td><input id="v1-y" class="component" value="0"></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="vector-name">v<sub>2</sub>:</td>
+        <td><input id="v2-x" class="component" value="0"></td>
+        <td><input id="v2-y" class="component" value="1"></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="vector-name">Point:</td>
+        <td><input id="v3-x" class="component" value=""></td>
+        <td><input id="v3-y" class="component" value=""></td>
+        <td><button id="clear-point-button">Clear</button></td>
+      </tr>
+    </table>
+    <br />
+    <canvas width="400" height="400" id="graph">
+    </canvas>
+    <br />
+    <button id="zoom-out-button">Zoom Out</button>
+    <button id="zoom-in-button">Zoom In</button>
+    
+  </body>
+</html>

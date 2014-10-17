@@ -1,0 +1,30 @@
+body {
+  background-color: #F8F8F8;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.2em;
+  margin: 15px;
+  text-align: center;
+}
+
+#input-table {
+  display: inline-block;
+}
+
+input.component {
+  width: 75px;
+  height: 30px;
+  font-size: 15px;
+}
+
+td.vector-name {
+  text-align: right;
+}
+
+#graph {
+  background-color: white;
+  margin-top: 10px;
+  width: 400px;
+  height: 400px;
+}
