@@ -2,6 +2,5 @@ name: vector_combiner
 description: A sample web application
 dependencies:
   browser: any
-  crystal:
-    path: /Users/alex/Documents/Code/Dart/API/crystal
+  crystal: '>=0.1.0 <0.1.1'
   vector_math: '>=1.4.0 <1.5.0'

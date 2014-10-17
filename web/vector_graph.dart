@@ -12,9 +12,20 @@ class VectorGraph extends ScalableCanvas {
   
   VectorGraph(CanvasElement canvas) : super(canvas);
   
+  /**
+   * Convert a point in Cartesian coordinates to a point in this canvas.
+   */
   Vector2 convertToCanvas(Vector2 point) {
     return new Vector2(canvasWidth / 2 + point.x * unitSize,
                        canvasHeight / 2 - point.y * unitSize);
+  }
+  
+  /**
+   * Convert a point in this canvas to a point in Cartesian coordinates.
+   */
+  Vector2 convertFromCanvas(Vector2 point) {
+    return new Vector2((point.x - (canvasWidth / 2)) / unitSize,
+                       (point.y - (canvasHeight / 2)) / -unitSize);
   }
   
   void draw() {
@@ -114,40 +125,10 @@ class VectorGraph extends ScalableCanvas {
   }
   
   void drawVector(String style, Vector2 absStart, Vector2 absEnd) {
-    if (absStart == null || absEnd == null) {
-      return;
-    }
-    
-    var start = convertToCanvas(absStart);
-    var end = convertToCanvas(absEnd);
-    var lineEnd;
-    var hasArrow = false;
-    if ((end - start).length < arrowSize) {
-      lineEnd = end;
-    } else {
-      hasArrow = true;
-      lineEnd = end - (end - start).normalize().scale(arrowSize.toDouble());
-    }
-    context..strokeStyle = style
-           ..lineWidth = 4
-           ..beginPath()
-           ..moveTo(start.x, start.y)
-           ..lineTo(lineEnd.x, lineEnd.y)
-           ..stroke()
-           ..closePath();
-    if (hasArrow) {
-      var normalized = (end - start).normalize();
-      var arrowBase = new Vector2(normalized.y, -normalized.x);
-      arrowBase.scale(arrowSize / 2);
-      var point1 = lineEnd + arrowBase;
-      var point2 = lineEnd - arrowBase;
-      context..fillStyle = style
-             ..beginPath()
-             ..moveTo(end.x, end.y)
-             ..lineTo(point1.x, point1.y)
-             ..lineTo(point2.x, point2.y)
-             ..fill()
-             ..closePath();
+    if (absStart != null && absEnd != null) {
+      var start = convertToCanvas(absStart);
+      var end = convertToCanvas(absEnd);
+      drawVectorInContext(context, start, end, arrowSize, style);
     }
   }
 }
